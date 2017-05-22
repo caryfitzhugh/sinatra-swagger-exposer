@@ -212,6 +212,9 @@ module Sinatra
       current_endpoint_info = settings.swagger_current_endpoint_info
       current_endpoint_parameters = settings.swagger_current_endpoint_parameters
       current_endpoint_responses = settings.swagger_current_endpoint_responses
+      
+      path = path.join if path.is_a?(Array)  # What if the path is funky? Dunno...
+      
       endpoint = Sinatra::SwaggerExposer::Configuration::SwaggerEndpoint.new(
         type,
         path,
